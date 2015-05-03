@@ -8,17 +8,44 @@
       <form action="/charge" method="POST">
       <p>meowmeowmunetoh usnteh ansuthe snatuh snetah usneato husntheao snutheas nuthesano uhts</p>
       <div class="submit">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl"
-          data-name="lord.io"
-          data-description="2 widgets"
-          data-amount="400"
-          data-bitcoin="true"
-          data-label="Pay Now">
-        </script>
+        <button id="customButton">Pay Now</button>
       </div>
       </form>
     </main>
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script>
+      var handler = StripeCheckout.configure({
+        key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
+        token: function(token) {
+          $.ajax({
+            type: "POST",
+            url: '/charge',
+            data: {
+              stripeToken: token.id,
+              stripeEmail: token.email
+            },
+            success: function() {
+              alert('yes!');
+            }
+          });
+        }
+      });
+      $('#customButton').on('click', function(e) {
+        // Open Checkout with further options
+        handler.open({
+          name: 'lord.io',
+          description: '2 widgets',
+          amount: 400,
+          bitcoin: true
+        });
+        e.preventDefault();
+      });
+
+      // Close Checkout on page navigation
+      $(window).on('popstate', function() {
+        handler.close();
+      });
+    </script>
   </body>
 </html>

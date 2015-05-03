@@ -20,18 +20,10 @@ class Cashin < Sinatra::Base
     charge = Stripe::Charge.create(
       :amount => 400,
       :currency => "usd",
-      :source => params[:stripeToken], # obtained with Stripe.js
+      :source => params[:stripeToken],
       :metadata => {'email' => params[:stripeEmail]},
-      :description => "Charge for test@example.com",
-      :capture => false
+      :description => "Charge for test@example.com"
     )
-
-    if charge.source.funding == "debit"
-      redirect '/?error=debit'
-      return
-    end
-
-    charge.capture
 
     redirect '/success'
   end
