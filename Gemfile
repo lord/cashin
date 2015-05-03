@@ -7,3 +7,4 @@ gem "sinatra"
 gem "thin"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'foreman', :group => :development
+gem 'sass'

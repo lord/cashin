@@ -12,6 +12,10 @@ class Cashin < Sinatra::Base
     erb :success
   end
 
+  get '/styles.css' do
+    scss :styles, :style => :compressed
+  end
+
   post '/charge' do
     charge = Stripe::Charge.create(
       :amount => 400,

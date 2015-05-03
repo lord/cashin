@@ -1,0 +1,29 @@
+@import 'normalize';
+@import 'flexbox';
+
+body {
+  background-color: #181E22;
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+main {
+  color: #ccc;
+  width: 100%;
+  max-width: 25em;
+}
+
+form {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5em;
+  border-radius: 3px;
+}
+
+button {
+  margin: 0 auto;
+}
+
+.submit {
+  text-align: center;
+}
