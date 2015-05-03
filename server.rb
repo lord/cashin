@@ -8,10 +8,6 @@ class Cashin < Sinatra::Base
     erb :pay
   end
 
-  get '/success' do
-    erb :success
-  end
-
   get '/styles.css' do
     scss :styles, :style => :compressed
   end
@@ -24,7 +20,5 @@ class Cashin < Sinatra::Base
       :metadata => {'email' => params[:stripeEmail]},
       :description => "Charge for test@example.com"
     )
-
-    redirect '/success'
   end
 end

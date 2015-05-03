@@ -1,15 +1,23 @@
 <html>
   <head>
     <title>Pay TODO change title</title>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
     <main>
       <form action="/charge" method="POST">
-      <p>meowmeowmunetoh usnteh ansuthe snatuh snetah usneato husntheao snutheas nuthesano uhts</p>
-      <div class="submit">
-        <button id="customButton">Pay Now</button>
-      </div>
+        <label class="form-item">
+          <span>Your Email</span>
+          <input type="email" id="email" class="text-input">
+        </label>
+        <label class="form-item">
+          <span>Amount</span>
+          <input type="text" id="amount" class="text-input">
+        </label>
+        <label class="form-item-centered">
+          <button id="customButton">Pay Now</button>
+        </label>
       </form>
     </main>
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
@@ -34,10 +42,11 @@
       $('#customButton').on('click', function(e) {
         // Open Checkout with further options
         handler.open({
-          name: 'lord.io',
+          name: 'Robert Lord',
           description: '2 widgets',
-          amount: 400,
-          bitcoin: true
+          amount: $("#amount").val() * 100,
+          bitcoin: true,
+          email: $("#email").val()
         });
         e.preventDefault();
       });
