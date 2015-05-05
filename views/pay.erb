@@ -8,15 +8,18 @@
     <main>
       <form action="/charge" method="POST">
         <label class="form-item">
-          <span>Your Email</span>
-          <input type="email" id="email" class="text-input">
+          <input type="email" id="email" class="text-input" placeholder="Your Email">
         </label>
         <label class="form-item">
-          <span>Amount</span>
-          <input type="text" id="amount" class="text-input">
+          <span>sends</span>
+          <input type="text" id="amount" class="text-input" placeholder="Dollar Amount">
         </label>
-        <label class="form-item-centered">
-          <button id="customButton">Pay Now</button>
+        <label class="form-item">
+          <span>for</span>
+          <input type="text" id="reason" class="text-input" placeholder="Reason">
+        </label>
+        <label class="form-item">
+          <button id="customButton">Send Money to Robert</button>
         </label>
       </form>
     </main>

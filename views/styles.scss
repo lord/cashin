@@ -7,40 +7,43 @@ body {
   @include justify-content(center);
   @include align-items(center);
   font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
 }
 
 main {
   color: #ccc;
   width: 100%;
-  max-width: 20em;
+  max-width: 23em;
 }
 
 form {
-  background-color: #404252;
-  padding: 1.5em;
+  background-color: #3E404F;
+  padding: 1.6em;
   border-radius: 5px;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.2), inset 0px 1px 0px rgba(255,255,255,0.05);
+  border: 1px solid #22232B;
 }
 
 button {
-  background-color: #1F58A7;
-  border: 1px solid #333;
+  background: #18853A;
+  border: 1px solid #0D4A21;
   border-radius: 5px;
-  padding: 0.8em 1.4em 0.8em 1.4em;
+  padding: 0.7em 1.4em 0.7em 1.4em;
   box-shadow: 0px 1px 2px rgba(0,0,0,0.2), inset 0px 1px 0px rgba(255,255,255,0.05);
-  font-size: 0.8em;
+  font-weight: 600;
+  margin-top: 0.8em;
 }
 
+$form-padding: 0.8em;
+
 .form-item {
-  padding-top: 1.5em;
+  padding-top: $form-padding;
   display: block;
+  text-align: center;
 }
 
 .form-item>span {
   display: block;
-  margin-bottom: 0.5em;
-  text-transform: uppercase;
-  font-size: 0.8em;
+  margin-bottom: $form-padding;
   color: rgba(255,255,255,0.7);
 }
 
@@ -48,22 +51,23 @@ button {
   padding-top: 0;
 }
 
-.form-item-centered {
-  @extend .form-item;
-  text-align: center;
-}
-
 .text-input {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.1);
   outline: none;
   display: block;
   box-sizing: border-box;
   width: 100%;
-  padding: 0.4em 0.5em;
+  padding: 0.2em 0.5em;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,0.2);
+  border: none;
+  font-weight: 600;
+  font-size: 1.29em;
+  text-align: center;
+
+  &:focus { background-color: rgba(0,0,0,0.2); }
 }
 
-button {
-  margin: 0 auto;
-}
+::-webkit-input-placeholder { color: #737373; }
+:-moz-placeholder { color: #737373; }
+::-moz-placeholder { color: #737373; }
+:-ms-input-placeholder { color: #737373; }
