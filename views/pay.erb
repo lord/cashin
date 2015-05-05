@@ -7,7 +7,7 @@
   <body>
     <main>
       <div class="header">
-        <img src="http://www.gravatar.com/avatar/3ae0c3eaeffe1fd40e8b792c17715ee6.jpg?s=120" class="avatar">
+        <img src="http://www.gravatar.com/avatar/meow.jpg?s=120&d=blank" id="userAvatar" class="avatar">
         <img src="/arrow.png" class="arrow">
         <img src="http://www.gravatar.com/avatar/3ae0c3eaeffe1fd40e8b792c17715ee6.jpg?s=120" class="avatar">
       </div>
@@ -32,6 +32,7 @@
       </div>
     </main>
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="/md5.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script>
       $(function() {
@@ -104,6 +105,7 @@
         });
 
         $('#email').on('change input', function() {
+          $("#userAvatar").attr("src","http://www.gravatar.com/avatar/" + md5($(this).val()) + ".jpg?s=120&d=blank");
         });
 
         // Close Checkout on page navigation
