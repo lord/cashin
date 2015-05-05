@@ -94,16 +94,12 @@
         }
       });
 
-      var checkReady = function() {
+      $('input').on('change input', function() {
         if (getAmount() && $('#amount').val() != "" && $('#email').val() != "" && $('#reason').val() != "") {
           $('#submitButton').attr('disabled', false).removeClass('disabled');
         } else {
           $('#submitButton').attr('disabled', true).addClass('disabled');
         }
-      };
-
-      $('input').on('change input', function() {
-        checkReady();
       });
 
       // Close Checkout on page navigation
