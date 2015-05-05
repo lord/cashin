@@ -6,6 +6,11 @@
   </head>
   <body>
     <main>
+      <div class="header">
+        <img src="http://www.gravatar.com/avatar/3ae0c3eaeffe1fd40e8b792c17715ee6.jpg?s=120" class="avatar">
+        <img src="/arrow.png" class="arrow">
+        <img src="http://www.gravatar.com/avatar/3ae0c3eaeffe1fd40e8b792c17715ee6.jpg?s=120" class="avatar">
+      </div>
       <form action="/charge" method="POST">
         <label class="form-item">
           <input type="email" id="email" class="text-input" placeholder="Your Email">
@@ -22,6 +27,9 @@
           <button id="customButton">Send Money to Robert</button>
         </label>
       </form>
+      <div class="footer">
+        Powered by <a href="https://github.com/lord/cashin">Cashin</a>
+      </div>
     </main>
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
@@ -29,6 +37,7 @@
       var handler = StripeCheckout.configure({
         key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
         token: function(token) {
+          console.log(token);
           $.ajax({
             type: "POST",
             url: '/charge',
