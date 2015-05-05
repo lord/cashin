@@ -34,77 +34,82 @@
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script>
-      var getAmount = function() {
-        var val = $('#amount').val();
-        if (val[0] == "$") {
-          val = val.substr(1);
+      $(function() {
+        var getAmount = function() {
+          var val = $('#amount').val();
+          if (val[0] == "$") {
+            val = val.substr(1);
+          }
+          if (isNaN(val)) {
+            return false;
+          } else {
+            return val;
+          }
         }
-        if (isNaN(val)) {
-          return false;
-        } else {
-          return val;
-        }
-      }
 
-      var handler = StripeCheckout.configure({
-        key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
-        token: function(token) {
-          console.log(token);
-          $.ajax({
-            type: "POST",
-            url: '/charge',
-            data: {
-              stripeToken: token.id,
-              stripeEmail: token.email
-            },
-            success: function() {
-              alert('yes!');
-            }
-          });
-        }
-      });
-
-      $('#submitButton').on('click', function(e) {
-        // Open Checkout with further options
-        handler.open({
-          name: 'Robert Lord',
-          description: '2 widgets',
-          amount: getAmount() * 100,
-          bitcoin: true,
-          email: $("#email").val()
+        var handler = StripeCheckout.configure({
+          key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
+          token: function(token) {
+            console.log(token);
+            $.ajax({
+              type: "POST",
+              url: '/charge',
+              data: {
+                stripeToken: token.id,
+                stripeEmail: token.email
+              },
+              success: function() {
+                alert('yes!');
+              }
+            });
+          }
         });
-        e.preventDefault();
-      });
 
-      // add $ on focus
-      $('#amount').on('focus', function() {
-        if ($(this).val() == "") {
-          setTimeout(function() {
-            $('#amount').val("$");
-          }, 0);
-        }
-      });
+        $('#submitButton').on('click', function(e) {
+          // Open Checkout with further options
+          handler.open({
+            name: 'Robert Lord',
+            description: '2 widgets',
+            amount: getAmount() * 100,
+            bitcoin: true,
+            email: $("#email").val()
+          });
+          e.preventDefault();
+        });
 
-      // remove $ on blur if no number
-      $('#amount').on('blur', function() {
-        if ($(this).val() == "$") {
-          setTimeout(function() {
-            $('#amount').val("");
-          }, 0);
-        }
-      });
+        // add $ on focus
+        $('#amount').on('focus', function() {
+          if ($(this).val() == "") {
+            setTimeout(function() {
+              $('#amount').val("$");
+            }, 0);
+          }
+        });
 
-      $('input').on('change input', function() {
-        if (getAmount() && $('#amount').val() != "" && $('#email').val() != "" && $('#reason').val() != "") {
-          $('#submitButton').attr('disabled', false).removeClass('disabled');
-        } else {
-          $('#submitButton').attr('disabled', true).addClass('disabled');
-        }
-      });
+        // remove $ on blur if no number
+        $('#amount').on('blur', function() {
+          if ($(this).val() == "$") {
+            setTimeout(function() {
+              $('#amount').val("");
+            }, 0);
+          }
+        });
 
-      // Close Checkout on page navigation
-      $(window).on('popstate', function() {
-        handler.close();
+        $('input').on('change input', function() {
+          if (getAmount() && $('#amount').val() != "" && $('#email').val() != "" && $('#reason').val() != "") {
+            $('#submitButton').attr('disabled', false).removeClass('disabled');
+          } else {
+            $('#submitButton').attr('disabled', true).addClass('disabled');
+          }
+        });
+
+        $('#email').on('change input', function() {
+        });
+
+        // Close Checkout on page navigation
+        $(window).on('popstate', function() {
+          handler.close();
+        });
       });
     </script>
   </body>
