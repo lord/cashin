@@ -1,11 +1,13 @@
 require 'sinatra'
 require 'stripe'
+require 'digest'
 
 Stripe.api_key = ENV["STRIPE_API_KEY"]
 
 class Cashin < Sinatra::Base
   get '/' do
-    erb :pay
+    md5 = Digest::MD5.new.update(ENV['USER_EMAIL'])
+    erb :pay, locals: {admin_hash: md5.hexdigest}
   end
 
   get '/styles.css' do

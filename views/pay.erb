@@ -9,7 +9,7 @@
       <div class="header">
         <img src="http://www.gravatar.com/avatar/meow.jpg?s=120&d=blank" id="userAvatar" class="avatar">
         <img src="/arrow.png" class="arrow">
-        <img src="http://www.gravatar.com/avatar/3ae0c3eaeffe1fd40e8b792c17715ee6.jpg?s=120" class="avatar">
+        <img src="http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120" class="avatar">
       </div>
       <form action="/charge" method="POST">
         <label class="form-item">
@@ -50,6 +50,7 @@
 
         var handler = StripeCheckout.configure({
           key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
+          image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
             console.log(token);
             $.ajax({
@@ -70,7 +71,7 @@
           // Open Checkout with further options
           handler.open({
             name: 'Robert Lord',
-            description: '2 widgets',
+            description: "For " + $("#reason").val(),
             amount: getAmount() * 100,
             bitcoin: true,
             email: $("#email").val()
