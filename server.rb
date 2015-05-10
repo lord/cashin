@@ -5,6 +5,12 @@ require 'digest'
 Stripe.api_key = ENV["STRIPE_API_KEY"]
 
 class Cashin < Sinatra::Base
+  helpers do
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
+  end
+
   get '/' do
     md5 = Digest::MD5.new.update(ENV['USER_EMAIL'])
     erb :pay, locals: {admin_hash: md5.hexdigest}

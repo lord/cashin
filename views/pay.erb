@@ -14,7 +14,7 @@
       <form action="/charge" method="POST">
         <label class="form-item">
           <% if params[:email] %>
-            <input type="email" id="email" class="text-input locked disabled" disabled value="<%= params[:email] %>">
+            <input type="email" id="email" class="text-input locked disabled" disabled value="<%=h params[:email] %>">
           <% else %>
             <input type="email" id="email" class="text-input" placeholder="Your Email">
           <% end %>
@@ -22,7 +22,7 @@
         <label class="form-item">
           <span>sends</span>
           <% if params[:amount] %>
-            <input type="text" id="amount" class="text-input locked disabled" disabled value="<%= params[:amount] %>">
+            <input type="text" id="amount" class="text-input locked disabled" disabled value="<%=h params[:amount] %>">
           <% else %>
             <input type="text" id="amount" class="text-input" placeholder="Dollar Amount">
           <% end %>
@@ -30,7 +30,7 @@
         <label class="form-item">
           <span>for</span>
           <% if params[:reason] %>
-            <input type="text" id="reason" class="text-input locked disabled" disabled value="<%= params[:reason] %>">
+            <input type="text" id="reason" class="text-input locked disabled" disabled value="<%=h params[:reason] %>">
           <% else %>
             <input type="text" id="reason" class="text-input" placeholder="Reason">
           <% end %>
