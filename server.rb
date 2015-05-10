@@ -16,7 +16,7 @@ class Cashin < Sinatra::Base
 
   post '/charge' do
     charge = Stripe::Charge.create(
-      :amount => 400,
+      :amount => params[:amount],
       :currency => "usd",
       :source => params[:stripeToken],
       :metadata => {'email' => params[:stripeEmail]},
