@@ -124,13 +124,15 @@
           }
         });
 
-        $('input').on('change input', function() {
+        var checkFormReady = function() {
           setEnabled($('#submitButton'),
             getAmount() &&
             $('#amount').val() != "" &&
             $('#email').val() != "" &&
             $('#reason').val() != "");
-        });
+        }
+        $('input').on('change input', checkFormReady);
+        checkFormReady();
 
         var updateGravatar = function() {
           $("#userAvatar").attr("src","http://www.gravatar.com/avatar/" + md5($("#email").val()) + ".jpg?s=120&d=blank");
