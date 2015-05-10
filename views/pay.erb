@@ -13,15 +13,27 @@
       </div>
       <form action="/charge" method="POST">
         <label class="form-item">
-          <input type="email" id="email" class="text-input" placeholder="Your Email">
+          <% if params[:email] %>
+            <input type="email" id="email" class="text-input locked disabled" disabled value="<%= params[:email] %>">
+          <% else %>
+            <input type="email" id="email" class="text-input" placeholder="Your Email">
+          <% end %>
         </label>
         <label class="form-item">
           <span>sends</span>
-          <input type="text" id="amount" class="text-input" placeholder="Dollar Amount">
+          <% if params[:amount] %>
+            <input type="text" id="amount" class="text-input locked disabled" disabled value="<%= params[:amount] %>">
+          <% else %>
+            <input type="text" id="amount" class="text-input" placeholder="Dollar Amount">
+          <% end %>
         </label>
         <label class="form-item">
           <span>for</span>
-          <input type="text" id="reason" class="text-input" placeholder="Reason">
+          <% if params[:reason] %>
+            <input type="text" id="reason" class="text-input locked disabled" disabled value="<%= params[:reason] %>">
+          <% else %>
+            <input type="text" id="reason" class="text-input" placeholder="Reason">
+          <% end %>
         </label>
         <label class="form-item">
           <button id="submitButton" class="disabled" disabled>Send Money to <%= ENV['USER_NAME'] %></button>
