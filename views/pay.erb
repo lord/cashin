@@ -43,6 +43,8 @@
           }
           if (isNaN(val)) {
             return false;
+          } else if (val < 0.50) {
+            return false;
           } else {
             return Math.floor(val*100);
           }
