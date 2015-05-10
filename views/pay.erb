@@ -81,7 +81,8 @@
               data: {
                 stripeToken: token.id,
                 stripeEmail: token.email,
-                amount: getAmount()
+                amount: getAmount(),
+                reason: $('#reason').val()
               },
               success: function() {
                 alert('yes!');

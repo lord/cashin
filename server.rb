@@ -19,7 +19,10 @@ class Cashin < Sinatra::Base
       :amount => params[:amount],
       :currency => "usd",
       :source => params[:stripeToken],
-      :metadata => {'email' => params[:stripeEmail]},
+      :metadata => {
+        'email' => params[:stripeEmail],
+        'reason' => params[:reason]
+      },
       :description => "Charge for test@example.com"
     )
     'success'
