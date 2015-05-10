@@ -21,6 +21,12 @@ form {
   padding: 2em;
   border-radius: 5px;
   border: 1px solid #22232B;
+  transition: all 400ms;
+
+  &.disabled {
+    background-color: transparent;
+    border-color: #22232B;
+  }
 }
 
 button {

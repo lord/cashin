@@ -60,7 +60,7 @@
           key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
           image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
-            console.log(token);
+            setEnabled($('input, button, form'), false);
             $.ajax({
               type: "POST",
               url: '/charge',
@@ -74,6 +74,7 @@
               },
               error: function() {
                 alert('no!');
+                setEnabled($('input, button, form'), true);
               }
             });
           }
