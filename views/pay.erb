@@ -120,9 +120,11 @@
             $('#reason').val() != "");
         });
 
-        $('#email').on('change input', function() {
-          $("#userAvatar").attr("src","http://www.gravatar.com/avatar/" + md5($(this).val()) + ".jpg?s=120&d=blank");
-        });
+        var updateGravatar = function() {
+          $("#userAvatar").attr("src","http://www.gravatar.com/avatar/" + md5($("#email").val()) + ".jpg?s=120&d=blank");
+        }
+        $('#email').on('change input', updateGravatar);
+        updateGravatar();
 
         // Close Checkout on page navigation
         $(window).on('popstate', function() {
