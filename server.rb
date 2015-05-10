@@ -22,5 +22,6 @@ class Cashin < Sinatra::Base
       :metadata => {'email' => params[:stripeEmail]},
       :description => "Charge for test@example.com"
     )
+    'success'
   end
 end
