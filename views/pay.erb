@@ -48,6 +48,14 @@
           }
         }
 
+        var setEnabled = function($el, enable) {
+          if (enable) {
+            $el.attr('disabled', false).removeClass('disabled');
+          } else {
+            $el.attr('disabled', true).addClass('disabled');
+          }
+        };
+
         var handler = StripeCheckout.configure({
           key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
           image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
@@ -102,11 +110,11 @@
         });
 
         $('input').on('change input', function() {
-          if (getAmount() && $('#amount').val() != "" && $('#email').val() != "" && $('#reason').val() != "") {
-            $('#submitButton').attr('disabled', false).removeClass('disabled');
-          } else {
-            $('#submitButton').attr('disabled', true).addClass('disabled');
-          }
+          setEnabled($('#submitButton'),
+            getAmount() &&
+            $('#amount').val() != "" &&
+            $('#email').val() != "" &&
+            $('#reason').val() != "");
         });
 
         $('#email').on('change input', function() {
