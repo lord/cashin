@@ -10,6 +10,11 @@ body {
   font-size: 14px;
 }
 
+body:after{
+  display:none;
+  content: url(/loading.png) url(/done.png) url(error.png);
+}
+
 main {
   color: #ccc;
   width: 100%;
