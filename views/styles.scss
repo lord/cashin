@@ -12,7 +12,7 @@ body {
 
 body:after{
   display:none;
-  content: url(/loading.png) url(/done.png) url(error.png);
+  content: url(/loading.png) url(/done.png) url(/error.png);
 }
 
 main {
@@ -71,7 +71,7 @@ button {
   width: 100%;
   transition: all 400ms;
 
-  &.sending, &.sent, &.error {
+  &.sending, &.sent, &.error, &.disabled {
     background-color: transparent;
     color: rgba(255,255,255,0.3);
     border-color: #22232B;
