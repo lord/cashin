@@ -36,7 +36,12 @@
           <% end %>
         </label>
         <label class="form-item">
-          <button id="submitButton" class="disabled" disabled>Send Money to <%= ENV['USER_NAME'] %></button>
+          <button id="submitButton" class="disabled" disabled>
+            <img src="/loading.png" class="sendingIndicator buttonIndicator" width="15">
+            <img src="/error.png" class="errorIndicator buttonIndicator" width="10">
+            <img src="/done.png" class="sentIndicator buttonIndicator" width="12">
+            <span id="submitButtonText">Send Money to <%= ENV['USER_NAME'] %></span>
+          </button>
         </label>
       </form>
       <div class="footer">
@@ -72,15 +77,20 @@
 
         var updateButton = function(status) {
           $button = $('#submitButton');
+          $text = $('#submitButtonText');
           $button.attr('disabled', true).removeClass('sending sent error');
           if (status == 'default') {
-            $button.text("Send Money to <%= ENV['USER_NAME'] %>").attr('disabled', false);
+            $button.attr('disabled', false);
+            $text.text("Send Money to <%= ENV['USER_NAME'] %>");
           } else if (status == 'sending') {
-            $button.text("Sending...").addClass('sending');
+            $button.addClass('sending');
+            $text.text("Sending...");
           } else if (status == 'sent') {
-            $button.text("Sent").addClass('sent');
+            $button.addClass('sent');
+            $text.text("Sent");
           } else if (status == 'error') {
-            $button.text("Payment Rejected").addClass('error');
+            $button.addClass('error');
+            $text.text("Payment Rejected");
           }
         }
 

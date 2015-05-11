@@ -10,11 +10,6 @@ body {
   font-size: 14px;
 }
 
-body:after{
-  display:none;
-  content: url(/loading.png) url(/done.png) url(/error.png);
-}
-
 main {
   color: #ccc;
   width: 100%;
@@ -81,44 +76,29 @@ button {
     color: rgba(24, 133, 58, 1);
   }
 
-  &.sending:before, &.error:before, &.sent:before {
-    content: '';
-    display: inline-block;
-    margin-right: 0.6em;
-    background-size: 100%;
-  }
-
-  &.sending:before {
+  &.sending>.sendingIndicator {
     -webkit-animation: spin 400ms linear 0 infinite;
     -moz-animation: spin 400ms linear 0 infinite;
     animation: spin 400ms linear 0 infinite;
-    width: 15px;
-    height: 15px;
+    display: inline-block;
     vertical-align: -2px;
-    background-image: url(/loading.png);
   }
 
-  &.sent:before {
+  &.sent>.sentIndicator, &.error>.errorIndicator {
     -webkit-animation: drop 200ms ease-in;
     -moz-animation: drop 200ms ease-in;
     animation: drop 200ms ease-in;
-    width: 12px;
-    height: 10px;
-    background-image: url(/done.png);
-  }
-
-  &.error:before {
-    -webkit-animation: drop 200ms ease-in;
-    -moz-animation: drop 200ms ease-in;
-    animation: drop 200ms ease-in;
-    width: 10px;
-    height: 10px;
-    background-image: url(/error.png);
+    display: inline-block;
   }
 
   &.error {
     color: rgba(255, 0, 0, 1);
   }
+}
+
+.buttonIndicator {
+  display: none;
+  margin-right: 0.3em;
 }
 
 $form-padding: 0.8em;
