@@ -1,5 +1,9 @@
 @import 'normalize';
 
+html {
+  height: 100%;
+}
+
 body {
   background-color: #2C2D36;
   display: table;
@@ -54,12 +58,13 @@ button {
   background-color: #18853A;
   border: 1px solid #0D4A21;
   border-radius: 5px;
-  padding: 0.6em 1.4em 0.6em 1.4em;
+  padding: 0.9em 1.4em 0.8em 1.4em;
   font-weight: 600;
   margin-top: 1em;
   display: block;
   width: 100%;
   transition: all 400ms;
+  line-height: 1;
 
   &.sending, &.sent, &.error, &.disabled {
     background-color: transparent;
@@ -74,8 +79,9 @@ button {
   &.sending>.sendingIndicator {
     -webkit-animation: spin 400ms linear 0s infinite;
     animation: spin 400ms linear 0s infinite;
-    display: inline-block;
-    vertical-align: -2px;
+    display: block;
+    margin: 0 auto;
+    height: 1em;
   }
 
   &.sent>.sentIndicator, &.error>.errorIndicator {

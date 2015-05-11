@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Send Money to <%= ENV['USER_FULLNAME'] %></title>
@@ -37,7 +38,7 @@
         </label>
         <label class="form-item">
           <button id="submitButton" class="disabled" disabled>
-            <img src="/loading.png" class="sendingIndicator buttonIndicator" width="15">
+            <img src="/loading.png" class="sendingIndicator buttonIndicator">
             <img src="/error.png" class="errorIndicator buttonIndicator" width="10">
             <img src="/done.png" class="sentIndicator buttonIndicator" width="12">
             <span id="submitButtonText">Send Money to <%= ENV['USER_NAME'] %></span>
@@ -84,7 +85,7 @@
             $text.text("Send Money to <%= ENV['USER_NAME'] %>");
           } else if (status == 'sending') {
             $button.addClass('sending');
-            $text.text("Sending");
+            $text.text("");
           } else if (status == 'sent') {
             $button.addClass('sent');
             $text.text("Sent");
