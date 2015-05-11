@@ -72,8 +72,8 @@ button {
   }
 
   &.sending>.sendingIndicator {
-    -webkit-animation: spin 400ms linear 0 infinite;
-    animation: spin 400ms linear 0 infinite;
+    -webkit-animation: spin 400ms linear 0s infinite;
+    animation: spin 400ms linear 0s infinite;
     display: inline-block;
     vertical-align: -2px;
   }
