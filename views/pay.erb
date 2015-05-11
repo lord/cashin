@@ -9,9 +9,9 @@
   <body>
     <main>
       <div class="header">
-        <img src="http://www.gravatar.com/avatar/blah.jpg?d=blank" id="userAvatar" class="avatar">
+        <img src="//www.gravatar.com/avatar/blah.jpg?d=blank" id="userAvatar" class="avatar">
         <img src="/arrow.png" class="arrow">
-        <img src="http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120" class="avatar">
+        <img src="//www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120" class="avatar">
       </div>
       <form action="/charge" method="POST">
         <label class="form-item">
@@ -50,7 +50,7 @@
         Powered by <a href="https://github.com/lord/cashin">Cashin</a>
       </div>
     </main>
-    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.js"></script>
     <script src="/md5.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
     <script>
@@ -100,7 +100,7 @@
 
         var handler = StripeCheckout.configure({
           key: '<%= ENV["STRIPE_API_PUBLIC_KEY"] %>',
-          image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
+          image: '//www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
             updateButton('sending');
             setEnabled($('input, form'), false);
@@ -168,7 +168,7 @@
         checkFormReady();
 
         var updateGravatar = function() {
-          $("#userAvatar").attr("src","http://www.gravatar.com/avatar/" + md5($("#email").val()) + ".jpg?s=120&d=blank");
+          $("#userAvatar").attr("src","//www.gravatar.com/avatar/" + md5($("#email").val()) + ".jpg?s=120&d=blank");
         }
         $('#email').on('change input', updateGravatar);
         updateGravatar();
