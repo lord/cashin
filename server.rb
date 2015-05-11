@@ -2,7 +2,7 @@ require 'sinatra'
 require 'stripe'
 require 'digest'
 
-Stripe.api_key = ENV["STRIPE_API_KEY"]
+Stripe.api_key = ENV["STRIPE_API_SECRET_KEY"]
 
 class Cashin < Sinatra::Base
   helpers do

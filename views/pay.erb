@@ -87,7 +87,7 @@
         updateButton('default');
 
         var handler = StripeCheckout.configure({
-          key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
+          key: '<%= ENV["STRIPE_API_PUBLIC_KEY"] %>',
           image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
             updateButton('sending');
