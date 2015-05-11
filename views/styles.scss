@@ -29,10 +29,6 @@ form {
   }
 }
 
-@-moz-keyframes spin {
-  0% { -moz-transform: rotate(0deg); }
-  100% { -moz-transform: rotate(360deg); }
-}
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -42,10 +38,6 @@ form {
   100% {transform:rotate(360deg);}
 }
 
-@-moz-keyframes drop {
-  0% { -moz-transform: scale(4); opacity: 0; }
-  100% { -moz-transform: scale(1); }
-}
 @-webkit-keyframes drop {
   0% { -webkit-transform: scale(4); opacity: 0; }
   100% { -webkit-transform: scale(1); }
@@ -78,7 +70,6 @@ button {
 
   &.sending>.sendingIndicator {
     -webkit-animation: spin 400ms linear 0 infinite;
-    -moz-animation: spin 400ms linear 0 infinite;
     animation: spin 400ms linear 0 infinite;
     display: inline-block;
     vertical-align: -2px;
@@ -86,7 +77,6 @@ button {
 
   &.sent>.sentIndicator, &.error>.errorIndicator {
     -webkit-animation: drop 200ms ease-in;
-    -moz-animation: drop 200ms ease-in;
     animation: drop 200ms ease-in;
     display: inline-block;
   }
