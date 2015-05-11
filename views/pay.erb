@@ -7,7 +7,7 @@
   <body>
     <main>
       <div class="header">
-        <img src="http://www.gravatar.com/avatar/meow.jpg?s=120&d=blank" id="userAvatar" class="avatar">
+        <img src="" id="userAvatar" class="avatar">
         <img src="/arrow.png" class="arrow">
         <img src="http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120" class="avatar">
       </div>
@@ -36,7 +36,7 @@
           <% end %>
         </label>
         <label class="form-item">
-          <button id="submitButton" class="disabled" disabled>Send Money to <%= ENV['USER_NAME'] %></button>
+          <button id="submitButton" class="disabled" disabled></button>
         </label>
       </form>
       <div class="footer">
@@ -70,10 +70,26 @@
           }
         };
 
+        var updateButton = function(status) {
+          if (status == 'default') {
+            text = "Send Money to <%= ENV['USER_NAME'] %>";
+          } else if (status == 'sending') {
+            text = "Sending...";
+          } else if (status == 'sent') {
+            text = "Sent";
+          } else if (status == 'error') {
+            text = "Payment Rejected";
+          }
+          $('#submitButton').text(text);
+        }
+
+        updateButton('default');
+
         var handler = StripeCheckout.configure({
           key: 'pk_DD4UaTHeSAIiDGTU7pt106I4aJuEl',
           image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
+            updateButton('sending');
             setEnabled($('input, button, form'), false);
             $.ajax({
               type: "POST",
@@ -85,11 +101,14 @@
                 reason: $('#reason').val()
               },
               success: function() {
-                alert('yes!');
+                updateButton('sent');
               },
               error: function() {
-                alert('no!');
-                setEnabled($('input, button, form'), true);
+                updateButton('error');
+                setTimeout(function() {
+                  updateButton('default');
+                  setEnabled($('input, button, form'), true);
+                }, 2000);
               }
             });
           }
