@@ -1,16 +1,19 @@
 @import 'normalize';
-@import 'flexbox';
 
 body {
   background-color: #2C2D36;
-  @include flexbox;
-  @include justify-content(center);
-  @include align-items(center);
+  display: table;
+  height: 100%;
+  width: 100%;
+  max-width: 24em;
+  margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
 }
 
 main {
+  display: table-cell;
+  vertical-align: middle;
   color: #ccc;
   width: 100%;
   max-width: 24em;
