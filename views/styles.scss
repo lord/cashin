@@ -55,6 +55,11 @@ $form-padding: 0.8em;
   text-align: center;
 }
 
+#userAvatar {
+  background-image: url(/money.png);
+  background-size: contain;
+}
+
 .form-item>span {
   display: block;
   margin-bottom: $form-padding;
