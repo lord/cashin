@@ -7,7 +7,7 @@
   <body>
     <main>
       <div class="header">
-        <img src="" id="userAvatar" class="avatar">
+        <img src="http://www.gravatar.com/avatar/blah.jpg?d=blank" id="userAvatar" class="avatar">
         <img src="/arrow.png" class="arrow">
         <img src="http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120" class="avatar">
       </div>
@@ -71,16 +71,17 @@
         };
 
         var updateButton = function(status) {
+          $button = $('#submitButton');
+          $button.attr('disabled', true).removeClass('sending sent error');
           if (status == 'default') {
-            text = "Send Money to <%= ENV['USER_NAME'] %>";
+            $button.text("Send Money to <%= ENV['USER_NAME'] %>").attr('disabled', false);
           } else if (status == 'sending') {
-            text = "Sending...";
+            $button.text("Sending...").addClass('sending');
           } else if (status == 'sent') {
-            text = "Sent";
+            $button.text("Sent").addClass('sent');
           } else if (status == 'error') {
-            text = "Payment Rejected";
+            $button.text("Payment Rejected").addClass('error');
           }
-          $('#submitButton').text(text);
         }
 
         updateButton('default');
@@ -90,7 +91,7 @@
           image: 'http://www.gravatar.com/avatar/<%= admin_hash %>.jpg?s=120',
           token: function(token) {
             updateButton('sending');
-            setEnabled($('input, button, form'), false);
+            setEnabled($('input, form'), false);
             $.ajax({
               type: "POST",
               url: '/charge',
@@ -107,8 +108,8 @@
                 updateButton('error');
                 setTimeout(function() {
                   updateButton('default');
-                  setEnabled($('input, button, form'), true);
-                }, 2000);
+                  setEnabled($('input, form'), true);
+                }, 3000);
               }
             });
           }

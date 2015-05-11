@@ -29,6 +29,32 @@ form {
   }
 }
 
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% {transform:rotate(0deg);}
+  100% {transform:rotate(360deg);}
+}
+
+@-moz-keyframes drop {
+  0% { -moz-transform: scale(4); opacity: 0; }
+  100% { -moz-transform: scale(1); }
+}
+@-webkit-keyframes drop {
+  0% { -webkit-transform: scale(4); opacity: 0; }
+  100% { -webkit-transform: scale(1); }
+}
+@keyframes drop {
+  0% { transform: scale(4); opacity: 0; }
+  100% { transform: scale(1); }
+}
+
 button {
   background-color: #18853A;
   border: 1px solid #0D4A21;
@@ -39,12 +65,55 @@ button {
   display: block;
   width: 100%;
   transition: all 400ms;
-}
 
-button.disabled {
-  background-color: transparent;
-  color: rgba(255,255,255,0.3);
-  border-color: #22232B;
+  &.sending, &.sent, &.error {
+    background-color: transparent;
+    color: rgba(255,255,255,0.3);
+    border-color: #22232B;
+  }
+
+  &.sending {
+    color: rgba(24, 133, 58, 1);
+  }
+
+  &.sending:before, &.error:before, &.sent:before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.6em;
+    background-size: 100%;
+  }
+
+  &.sending:before {
+    -webkit-animation: spin 400ms linear 0 infinite;
+    -moz-animation: spin 400ms linear 0 infinite;
+    animation: spin 400ms linear 0 infinite;
+    width: 15px;
+    height: 15px;
+    vertical-align: -2px;
+    background-image: url(/loading.png);
+  }
+
+  &.sent:before {
+    -webkit-animation: drop 200ms ease-in;
+    -moz-animation: drop 200ms ease-in;
+    animation: drop 200ms ease-in;
+    width: 12px;
+    height: 10px;
+    background-image: url(/done.png);
+  }
+
+  &.error:before {
+    -webkit-animation: drop 200ms ease-in;
+    -moz-animation: drop 200ms ease-in;
+    animation: drop 200ms ease-in;
+    width: 10px;
+    height: 10px;
+    background-image: url(/error.png);
+  }
+
+  &.error {
+    color: rgba(255, 0, 0, 1);
+  }
 }
 
 $form-padding: 0.8em;
