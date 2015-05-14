@@ -1,0 +1,28 @@
+{
+  "name": "Cashin",
+  "description": "A dead-simple credit card form with Stripe",
+  "repository": "https://github.com/lord/cashin",
+  "keywords": ["cash", "money", "stripe", "sinatra", "ruby"],
+  "env": {
+      "STRIPE_API_SECRET_KEY": {
+        "description": "Your Stripe secret API key (find it at https://dashboard.stripe.com/account/apikeys)",
+        "required": true
+      },
+      "STRIPE_API_PUBLIC_KEY": {
+        "description": "Your Stripe publishable API key",
+        "required": true
+      },
+      "USER_FULLNAME": {
+        "description": "Your full name",
+        "required": true
+      },
+      "USER_NAME": {
+        "description": "Your first name, or nickname",
+        "required": true
+      },
+      "USER_EMAIL": {
+        "description": "Your email address (to find your gravatar)",
+        "required": true
+      }
+    }
+}
