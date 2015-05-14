@@ -1,4 +1,6 @@
 # cashin
 Accept cash from friends online
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+<a href="https://heroku.com/deploy">
+  <img src="https://www.herokucdn.com/deploy/button@2x.png" alt="Deploy" width=147>
+</a>
