@@ -29,7 +29,7 @@ class Cashin < Sinatra::Base
         'email' => params[:stripeEmail],
         'reason' => params[:reason]
       },
-      :description => "Charge for test@example.com"
+      :description => "Cashin Charge"
     )
     'success'
   end
